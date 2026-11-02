@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17151d">
+    <meta name="description" content="A little love letter, written for the one I choose every day.">
+    <title>For my favorite person, always</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --night: #17151d;
+            --night-soft: #201c27;
+            --cream: #f7f0e9;
+            --muted: #c3b9c3;
+            --rose: #eea8ad;
+            --rose-light: #ffd3cd;
+            --serif: "Playfair Display", Georgia, serif;
+            --sans: "DM Sans", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            overflow-x: hidden;
+            background:
+                radial-gradient(ellipse at 50% 23%, rgba(128, 77, 104, .2), transparent 38rem),
+                var(--night);
+            color: var(--cream);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            position: fixed;
+            z-index: -1;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,.55) .65px, transparent .65px);
+            background-size: 41px 41px;
+            content: "";
+            opacity: .16;
+            pointer-events: none;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; }
+        ::selection { background: var(--rose); color: var(--night); }
+
+        .page {
+            width: min(100% - 44px, 1040px);
+            margin-inline: auto;
+        }
+
+        .top {
+            display: flex;
+            height: 82px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(247, 240, 233, .12);
+            color: #d7cbd4;
+            font-size: 11px;
+            letter-spacing: .08em;
+        }
+
+        .signature {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--cream);
+            font-family: var(--serif);
+            font-size: 16px;
+            font-style: italic;
+            letter-spacing: 0;
+        }
+
+        .signature-heart { color: var(--rose); font-size: 14px; }
+        .top-note { text-transform: uppercase; }
+
+        .hero {
+            position: relative;
+            display: flex;
+            min-height: 700px;
+            align-items: center;
+            justify-content: center;
+            padding: 82px 0 95px;
+            text-align: center;
+        }
+
+        .hero-inner { position: relative; z-index: 1; width: min(100%, 720px); }
+
+        .orbit-heart {
+            position: relative;
+            display: grid;
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 34px;
+            place-items: center;
+            color: var(--rose-light);
+            font-size: 25px;
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        .orbit-heart::before, .orbit-heart::after {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(238, 168, 173, .46);
+            border-radius: 50%;
+            content: "";
+            transform: rotate(-24deg) scaleY(.42);
+        }
+
+        .orbit-heart::after {
+            inset: 12px -8px;
+            border-color: rgba(238, 168, 173, .23);
+            transform: rotate(38deg) scaleY(.55);
+        }
+
+        .eyebrow {
+            margin: 0 0 22px;
+            color: var(--rose);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(48px, 8.5vw, 89px);
+            font-weight: 500;
+            letter-spacing: -.055em;
+            line-height: 1.06;
+        }
+
+        h1 em {
+            color: var(--rose-light);
+            font-weight: 500;
+        }
+
+        .hero-copy {
+            max-width: 470px;
+            margin: 25px auto 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 34px;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #a89ca8;
+            font-size: 9px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            transform: translateX(-50%);
+        }
+
+        .scroll-cue::after { width: 34px; height: 1px; background: var(--rose); content: ""; }
+
+        .letter-section { padding: 32px 0 112px; }
+
+        .letter {
+            position: relative;
+            width: min(100%, 720px);
+            margin: 0 auto;
+            padding: clamp(30px, 7vw, 67px);
+            border: 1px solid rgba(238, 168, 173, .27);
+            background:
+                linear-gradient(140deg, rgba(255,255,255,.035), transparent 48%),
+                rgba(32, 28, 39, .87);
+            box-shadow: 0 34px 100px rgba(0, 0, 0, .22);
+        }
+
+        .letter::before, .letter::after {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            border-color: rgba(238, 168, 173, .56);
+            border-style: solid;
+            content: "";
+        }
+
+        .letter::before { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+        .letter::after { right: 12px; bottom: 12px; border-width: 0 1px 1px 0; }
+
+        .letter-label {
+            margin: 0 0 31px;
+            color: var(--rose);
+            font-size: 9px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .letter h2 {
+            margin: 0 0 29px;
+            font-family: var(--serif);
+            font-size: clamp(27px, 4vw, 39px);
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        .letter-copy {
+            max-width: 530px;
+            color: #d4cad2;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .letter-copy p { margin: 0 0 20px; }
+        .letter-copy em { color: var(--rose-light); font-family: var(--serif); font-size: 1.1em; }
+
+        .letter-signoff {
+            margin: 34px 0 0;
+            color: var(--rose-light);
+            font-family: var(--serif);
+            font-size: 21px;
+            font-style: italic;
+        }
+
+        .choose {
+            padding: 93px 0 105px;
+            border-top: 1px solid rgba(247, 240, 233, .12);
+            text-align: center;
+        }
+
+        .choose-kicker {
+            margin: 0 0 20px;
+            color: var(--rose);
+            font-size: 9px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .choose h2 {
+            max-width: 660px;
+            margin: 0 auto;
+            font-family: var(--serif);
+            font-size: clamp(39px, 7vw, 68px);
+            font-weight: 500;
+            letter-spacing: -.055em;
+            line-height: 1.12;
+        }
+
+        .choose h2 em { color: var(--rose-light); }
+        .choose-copy { margin: 18px 0 30px; color: var(--muted); font-size: 13px; }
+
+        .yes-button {
+            position: relative;
+            display: inline-flex;
+            min-height: 52px;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            padding: 0 24px;
+            border: 1px solid var(--rose);
+            border-radius: 2px;
+            background: var(--rose);
+            color: #241720;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .yes-button:hover {
+            background: var(--rose-light);
+            box-shadow: 0 8px 35px rgba(238, 168, 173, .2);
+            transform: translateY(-2px);
+        }
+
+        .yes-button:focus-visible, .small-link:focus-visible {
+            outline: 2px solid var(--rose-light);
+            outline-offset: 5px;
+        }
+
+        .yes-button .arrow { transition: transform .2s ease; }
+        .yes-button:hover .arrow { transform: translateX(4px); }
+
+        .answer {
+            min-height: 28px;
+            margin: 17px 0 0;
+            color: var(--rose-light);
+            font-family: var(--serif);
+            font-size: 17px;
+            font-style: italic;
+        }
+
+        .little-truth {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 9px auto 100px;
+            border-block: 1px solid rgba(247, 240, 233, .13);
+        }
+
+        .truth {
+            min-height: 126px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 9px;
+            padding: 20px 14px;
+            text-align: center;
+        }
+
+        .truth + .truth { border-left: 1px solid rgba(247, 240, 233, .13); }
+        .truth strong { color: var(--rose-light); font-family: var(--serif); font-size: 22px; font-weight: 500; }
+        .truth span { color: #b6abb5; font-size: 10px; letter-spacing: .04em; }
+
+        footer {
+            display: flex;
+            min-height: 76px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            border-top: 1px solid rgba(247, 240, 233, .12);
+            color: #a89da8;
+            font-size: 10px;
+        }
+
+        .footer-heart { color: var(--rose); }
+
+        .petal {
+            position: fixed;
+            z-index: 5;
+            top: -25px;
+            color: var(--rose-light);
+            pointer-events: none;
+            animation: fall 3.8s ease-in forwards;
+        }
+
+        @keyframes breathe {
+            50% { transform: scale(1.09); }
+        }
+
+        @keyframes fall {
+            to { opacity: 0; transform: translate3d(var(--drift), 105vh, 0) rotate(480deg); }
+        }
+
+        @media (max-width: 600px) {
+            .page { width: calc(100% - 36px); }
+            .top { height: 68px; font-size: 9px; }
+            .signature { font-size: 14px; }
+            .hero { min-height: 650px; padding: 72px 0 90px; }
+            .orbit-heart { margin-bottom: 30px; }
+            .hero-copy { max-width: 360px; font-size: 13px; }
+            .letter-section { padding: 10px 0 80px; }
+            .letter { padding: 39px 27px; }
+            .letter-copy { font-size: 13px; }
+            .choose { padding: 75px 0 82px; }
+            .little-truth { margin-bottom: 75px; }
+            .truth { min-height: 112px; padding-inline: 8px; }
+            .truth strong { font-size: 18px; }
+            .truth span { font-size: 9px; line-height: 1.5; }
+            footer { font-size: 9px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="page top">
+        <a class="signature" href="#home" aria-label="Back to the beginning">
+            <span class="signature-heart" aria-hidden="true">♥</span>
+            <span>just us, always</span>
+        </a>
+        <span class="top-note">A little note from Shahzaib</span>
+    </header>
+
+    <main>
+        <section class="page hero" id="home">
+            <div class="hero-inner">
+                <div class="orbit-heart" aria-hidden="true">♥</div>
+                <p class="eyebrow">For my favorite person</p>
+                <h1>Out of everyone,<br>in every lifetime,<br><em>it's still you.</em></h1>
+                <p class="hero-copy">Some feelings deserve more than a passing “I love you.” So here's a little piece of my heart, just for you.</p>
+            </div>
+            <a class="scroll-cue" href="#letter">Read my little letter</a>
+        </section>
+
+        <section class="page letter-section" id="letter" aria-labelledby="letter-title">
+            <article class="letter">
+                <p class="letter-label">A letter, from my heart</p>
+                <h2 id="letter-title">My love,</h2>
+                <div class="letter-copy">
+                    <p>You were my <em>first love</em>—the one who made my heart understand what it means to belong to someone. And you are my <em>last love</em>, because even in every tomorrow I can imagine, my heart keeps finding its way back to you.</p>
+                    <p>When you're not beside me, I miss you in the little spaces between things—in the quiet, in the ordinary, in every second I wish I could share with you. No matter how far apart we are, some part of me is always reaching for you.</p>
+                    <p>I don't want to love you just once, or only when it's easy. I want to keep choosing you: in all the little moments, on all the ordinary days, for as long as you'll let me.</p>
+                    <p>So here I am, asking again—not because my answer has changed, but because you deserve to hear it as often as my heart feels it:</p>
+                </div>
+                <p class="letter-signoff">All my love,<br>Shahzaib</p>
+            </article>
+        </section>
+
+        <section class="page choose" id="again" aria-labelledby="proposal-title">
+            <p class="choose-kicker">And now, one more time</p>
+            <h2 id="proposal-title">Will you let me keep<br><em>loving you?</em></h2>
+            <p class="choose-copy">My first love. My last love. My favorite yes.</p>
+            <button class="yes-button" id="yesButton" type="button">
+                Yes, always <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+            <p class="answer" id="answer" aria-live="polite"></p>
+        </section>
+
+        <section class="page little-truth" aria-label="Three things I want you to know">
+            <div class="truth">
+                <strong>My first</strong>
+                <span>the one who made my heart open</span>
+            </div>
+            <div class="truth">
+                <strong>My always</strong>
+                <span>the one I keep choosing</span>
+            </div>
+            <div class="truth">
+                <strong>My last</strong>
+                <span>the one my heart comes home to</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="page">
+        <span>Made of all my <span class="footer-heart" aria-hidden="true">♥</span>, for you.</span>
+        <a class="small-link" href="#home">Back to the beginning ↑</a>
+    </footer>
+
+    <script>
+        const yesButton = document.getElementById("yesButton");
+        const answer = document.getElementById("answer");
+
+        yesButton.addEventListener("click", () => {
+            answer.textContent = "Then I'll keep choosing you, every day. ♥";
+
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+            for (let index = 0; index < 24; index += 1) {
+                const petal = document.createElement("span");
+                petal.className = "petal";
+                petal.textContent = index % 3 === 0 ? "✦" : "♥";
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.fontSize = `${10 + Math.random() * 12}px`;
+                petal.style.animationDelay = `${Math.random() * 1.2}s`;
+                petal.style.setProperty("--drift", `${Math.random() * 150 - 75}px`);
+                document.body.appendChild(petal);
+                petal.addEventListener("animationend", () => petal.remove(), { once: true });
+            }
+        });
+    </script>
+</body>
+</html>
